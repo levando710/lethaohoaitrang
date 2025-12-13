@@ -99,29 +99,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initSwiperSlider() {
     new Swiper(".mySwiper", {
-        slidesPerView: 1,
+        slidesPerView: 3, 
         spaceBetween: 20,
         loop: true,
         centeredSlides: true,
-        autoHeight: true, // Tự động chỉnh chiều cao theo ảnh
         autoplay: {
-            delay: 3000,
+            delay: 2500,
             disableOnInteraction: false,
         },
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
-        },
-        breakpoints: {
-            640: { 
-                slidesPerView: 2,
-                autoHeight: false
-            },
-            1024: { 
-                slidesPerView: 3,
-                autoHeight: false
-            },
-        },
+        }
     });
 
     const galleryImages = document.querySelectorAll('.gallery-img');
