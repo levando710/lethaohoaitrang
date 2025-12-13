@@ -1,26 +1,13 @@
-AOS.init({ once: true, offset: 50, duration: 800 });
+AOS.init({ once: true, offset: 30, duration: 800 });
 
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('mainNav');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-        navbar.classList.remove('navbar-dark');
-        navbar.classList.add('navbar-light');
-    } else {
-        navbar.classList.remove('scrolled');
-        navbar.classList.remove('navbar-light');
-        navbar.classList.add('navbar-dark');
-    }
-});
-
+// Countdown (Giữ nguyên logic)
 const weddingDate = new Date("December 28, 2025 00:00:00").getTime();
-
 setInterval(function() {
     const now = new Date().getTime();
     const distance = weddingDate - now;
 
     if (distance < 0) {
-        document.getElementById("countdown").innerHTML = "<div class='fs-2 text-white'>Happy Wedding!</div>";
+        document.getElementById("countdown").innerHTML = "<div class='text-white fw-bold'>Happy Wedding!</div>";
         return;
     }
 
@@ -31,52 +18,51 @@ setInterval(function() {
 
     const html = `
         <div class="time-box">
-            <div class="display-5 fw-bold">${days}</div>
+            <div class="display-5">${days}</div>
             <div class="small">Ngày</div>
         </div>
         <div class="time-box">
-            <div class="display-5 fw-bold">${hours}</div>
+            <div class="display-5">${hours}</div>
             <div class="small">Giờ</div>
         </div>
         <div class="time-box">
-            <div class="display-5 fw-bold">${minutes}</div>
+            <div class="display-5">${minutes}</div>
             <div class="small">Phút</div>
         </div>
         <div class="time-box">
-            <div class="display-5 fw-bold">${seconds}</div>
+            <div class="display-5">${seconds}</div>
             <div class="small">Giây</div>
         </div>
     `;
     document.getElementById("countdown").innerHTML = html;
 }, 1000);
 
+// Form Submit (Giữ nguyên)
 const form = document.getElementById('rsvpForm');
 const btnSubmit = document.getElementById('btnSubmit');
 const scriptURL = 'https://script.google.com/macros/s/AKfycby4sSGPcyVxZpkS6uKYjI66AgpC2gqmC6U_fX-DLozkuaN6ykVmH0rxudiezuTGA1Tn/exec';
 
 form.addEventListener('submit', e => {
     e.preventDefault();
-    
     btnSubmit.disabled = true;
-    btnSubmit.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Đang gửi...';
-
+    btnSubmit.innerHTML = 'Đang gửi...';
     fetch(scriptURL, { method: 'POST', body: new FormData(form)})
         .then(response => {
-            alert("Cảm ơn bạn! Chúng tôi đã nhận được xác nhận.");
+            alert("Đã gửi thành công!");
             form.reset();
             btnSubmit.disabled = false;
             btnSubmit.innerHTML = 'Gửi Xác Nhận';
         })
         .catch(error => {
-            alert("Có lỗi xảy ra! Vui lòng thử lại.");
-            console.error('Error!', error.message);
+            alert("Lỗi!");
             btnSubmit.disabled = false;
             btnSubmit.innerHTML = 'Gửi Xác Nhận';
         });
 });
 
+// Slider & Lightbox
 document.addEventListener('DOMContentLoaded', function() {
-    const totalImages = 20;
+    const totalImages = 20; 
     const folder = 'images/album/';
     const container = document.getElementById('gallery-wrapper');
     
@@ -85,56 +71,33 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let i = 1; i <= totalImages; i++) {
             html += `
                 <div class="swiper-slide">
-                    <img src="${folder}${i}.jpg" 
-                         class="gallery-img rounded shadow-sm" 
-                         alt="Ảnh cưới ${i}" 
-                         loading="lazy">
+                    <img src="${folder}${i}.jpg" class="gallery-img" loading="lazy">
                 </div>
             `;
         }
         container.innerHTML = html;
-        initSwiperSlider();
+        
+        // Cấu hình Slider chuyên cho Mobile App
+        new Swiper(".mySwiper", {
+            slidesPerView: 1.2, // Hiện 1 ảnh rưỡi để người dùng biết có thể lướt tiếp
+            spaceBetween: 15,
+            centeredSlides: true,
+            loop: true,
+            autoplay: { delay: 2500, disableOnInteraction: false },
+            pagination: { el: ".swiper-pagination", clickable: true },
+        });
+
+        const galleryImages = document.querySelectorAll('.gallery-img');
+        const lightboxImage = document.getElementById('lightboxImage');
+        const imageModalElement = document.getElementById('imageModal');
+        if (imageModalElement && lightboxImage) {
+            const imageModal = new bootstrap.Modal(imageModalElement);
+            galleryImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightboxImage.src = this.src;
+                    imageModal.show();
+                });
+            });
+        }
     }
 });
-
-function initSwiperSlider() {
-    new Swiper(".mySwiper", {
-        slidesPerView: 1, // Mặc định mobile 1 ảnh
-        spaceBetween: 20,
-        loop: true,
-        centeredSlides: true,
-        autoHeight: true, // Tự động chỉnh chiều cao để ảnh không bị cắt
-        autoplay: {
-            delay: 3000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        breakpoints: {
-            768: { 
-                slidesPerView: 2, // Tablet 2 ảnh
-                autoHeight: false
-            },
-            1024: { 
-                slidesPerView: 3, // Desktop 3 ảnh
-                autoHeight: false
-            },
-        },
-    });
-
-    const galleryImages = document.querySelectorAll('.gallery-img');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const imageModalElement = document.getElementById('imageModal');
-
-    if (imageModalElement && lightboxImage) {
-        const imageModal = new bootstrap.Modal(imageModalElement);
-        galleryImages.forEach(img => {
-            img.addEventListener('click', function() {
-                lightboxImage.src = this.src;
-                imageModal.show();
-            });
-        });
-    }
-}

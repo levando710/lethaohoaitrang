@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Đám cưới Hoài Trang & Lê Thao</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
@@ -13,239 +13,204 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark transition-all" id="mainNav">
-        <div class="container">
-            <a class="navbar-brand font-cinzel" href="#">T & T</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <ul class="navbar-nav text-uppercase font-montserrat small-text">
-                    <li class="nav-item"><a class="nav-link" href="#home">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#couple">Cặp đôi</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Album Ảnh</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#events">Sự kiện</a></li>
-                    <li class="nav-item"><a class="nav-link btn btn-primary text-white ms-lg-3 px-4 rounded-pill" href="#rsvp">Gửi lời chúc</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div class="mobile-container shadow-lg">
 
-    <header id="home" class="vh-100 d-flex align-items-center justify-content-center text-center text-white position-relative header-bg">
-        <div class="overlay"></div>
-        <div class="container position-relative z-2" data-aos="fade-up" data-aos-duration="1500">
-            <h4 class="text-uppercase letter-spacing-3 mb-3">Save The Date</h4>
-            <h1 class="display-1 font-playfair mb-3">Hoài Trang <span class="text-primary">&</span> Lê Thao</h1>
-            <p class="fs-4 fst-italic mb-4">Chúng mình sắp về chung một nhà!</p>
-            <div class="border-top border-bottom border-light py-3 d-inline-block px-5 mb-5">
-                <span class="fs-3 font-cinzel">28 . 12 . 2025</span>
+        <nav class="navbar sticky-top border-bottom">
+            <div class="container-fluid justify-content-center">
+                <a class="navbar-brand font-cinzel m-0" href="#">T & T</a>
             </div>
-            <div id="countdown" class="d-flex justify-content-center gap-2 gap-md-4 mb-4"></div>
-        </div>
-    </header>
+        </nav>
 
-    <section id="couple" class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
+        <header id="home" class="header-bg d-flex align-items-center justify-content-center text-center text-white">
+            <div class="overlay"></div>
+            <div class="position-relative z-2 px-3" data-aos="fade-up">
+                <p class="text-uppercase letter-spacing-3 mb-2 small">Save The Date</p>
+                <h1 class="display-1 font-playfair mb-3">Hoài Trang <br> <span class="fs-4 fst-italic">&</span> <br> Lê Thao</h1>
+                
+                <div class="d-inline-block border-top border-bottom border-light py-2 px-4 mb-4">
+                    <span class="fs-4 font-cinzel">28 . 12 . 2025</span>
+                </div>
+
+                <div id="countdown" class="d-flex justify-content-center mb-4"></div>
+                
+                <a href="#rsvp" class="btn btn-primary rounded-pill shadow pulse-btn">Gửi Lời Chúc</a>
+            </div>
+        </header>
+
+        <section id="couple" class="py-5">
+            <div class="text-center mb-4 px-3">
                 <h2 class="font-playfair display-5">Cô Dâu & Chú Rể</h2>
-                <div class="divider mx-auto"></div>
+                <div class="divider"></div>
+                <p class="text-muted small">Tình yêu là hành trình dài, và chúng mình đã tìm thấy nhau.</p>
             </div>
             
-            <div class="row align-items-center justify-content-center text-center gx-1 gx-md-4">
-                <div class="col-6 col-md-4 mb-4" data-aos="fade-right">
-                    <div class="card border-0 bg-transparent">
-                        <img src="images/groom.jpg" class="rounded-circle shadow-lg mx-auto mb-3 img-thumbnail border-0 couple-img">
-                        <h3 class="font-playfair couple-name text-nowrap-mobile">Lê Thao</h3>
-                        <p class="text-muted small">Chàng bác sĩ vui tính.</p>
-                    </div>
+            <div class="row mx-0 px-2 align-items-center justify-content-center text-center">
+                <div class="col-6 mb-3" data-aos="fade-right">
+                    <img src="images/groom.jpg" class="couple-img">
+                    <h3 class="couple-name">Lê Thao</h3>
+                    <p class="text-muted small mb-0">Chàng bác sĩ</p>
                 </div>
                 
-                <div class="col-md-1 d-none d-md-block text-center" data-aos="zoom-in">
-                    <i class="bi bi-heart-fill text-primary fs-1"></i>
-                </div>
-
-                <div class="col-6 col-md-4 mb-4" data-aos="fade-left">
-                    <div class="card border-0 bg-transparent">
-                        <img src="images/bride.jpg" class="rounded-circle shadow-lg mx-auto mb-3 img-thumbnail border-0 couple-img">
-                        <h3 class="font-playfair couple-name text-nowrap-mobile">Hoài Trang</h3>
-                        <p class="text-muted small">Nàng y tá mộng mơ.</p>
-                    </div>
+                <div class="col-6 mb-3" data-aos="fade-left">
+                    <img src="images/bride.jpg" class="couple-img">
+                    <h3 class="couple-name">Hoài Trang</h3>
+                    <p class="text-muted small mb-0">Nàng y tá</p>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="gallery" class="py-5 bg-light">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
-                <h2 class="font-playfair display-5">Album Hạnh Phúc</h2>
-                <div class="divider mx-auto mb-3"></div>
-                <p class="text-muted">Những khoảnh khắc đẹp nhất.</p>
+        <section id="gallery" class="py-5 bg-light">
+            <div class="text-center mb-4 px-3">
+                <h2 class="font-playfair display-5">Album Ảnh</h2>
+                <div class="divider"></div>
             </div>
-            <div class="swiper mySwiper" data-aos="fade-up">
-                <div class="swiper-wrapper" id="gallery-wrapper"></div>
-                <div class="swiper-pagination"></div>
+            <div class="px-3">
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper" id="gallery-wrapper"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="events" class="py-5 bg-secondary bg-opacity-10">
-        <div class="container py-5">
-            <div class="text-center mb-5" data-aos="fade-up">
+        <section id="events" class="py-5">
+            <div class="text-center mb-4 px-3">
                 <h2 class="font-playfair display-5">Sự Kiện</h2>
-                <div class="divider mx-auto mb-3"></div>
-                <p class="text-muted">Trân trọng kính mời quý khách</p>
+                <div class="divider"></div>
+                <p class="text-muted small">Trân trọng kính mời quý khách</p>
             </div>
-            <div class="row justify-content-center g-4">
-                <div class="col-lg-5 col-12" data-aos="fade-up">
-                    <div class="card border-0 shadow rounded-4 overflow-hidden h-100">
-                        <div class="card-header bg-white border-bottom-0 text-center pt-4 pb-0">
-                            <span class="badge bg-danger bg-opacity-10 text-danger fs-6 px-3 py-2 rounded-pill mb-2 text-nowrap-mobile">
-                                NHÀ GÁI
-                            </span>
-                            <h3 class="font-playfair text-danger display-6 text-nowrap-mobile">Hoài Trang</h3>
+
+            <div class="px-3">
+                <div class="event-card" data-aos="fade-up">
+                    <div class="event-header bg-bride-light">
+                        <span class="badge bg-danger rounded-pill mb-2">NHÀ GÁI</span>
+                        <h3 class="font-playfair text-bride m-0">Hoài Trang</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="row g-2 mb-3">
+                            <div class="col-6 border-end">
+                                <small class="text-muted d-block">Lễ Vu Quy</small>
+                                <strong class="fs-5 text-dark">08:30</strong>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted d-block">Tiệc Mừng</small>
+                                <strong class="fs-5 text-dark">11:00</strong>
+                            </div>
                         </div>
-                        <div class="card-body p-3 text-center">
-                            <div class="row justify-content-center g-2 mb-3">
-                                <div class="col-6">
-                                    <div class="py-3 px-1 rounded-3 bg-danger bg-opacity-10 h-100">
-                                        <h6 class="font-playfair text-danger mb-1 text-nowrap-mobile">Lễ Vu Quy</h6>
-                                        <p class="mb-0 fw-bold">08:30</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="py-3 px-1 rounded-3 bg-danger bg-opacity-10 h-100">
-                                        <h6 class="font-playfair text-danger mb-1 text-nowrap-mobile">Tiệc Mừng</h6>
-                                        <p class="mb-0 fw-bold">11:00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-top pt-3">
-                                <h5 class="fw-bold text-dark mb-1">Tư Gia Nhà Gái</h5>
-                                <p class="text-muted mb-3 small">Số 10, Hoa Phượng, HP</p>
-                                <a href="https://goo.gl/maps/placeholder" target="_blank" class="btn btn-sm btn-danger text-white rounded-pill px-4 shadow-sm text-nowrap-mobile">
-                                    <i class="bi bi-map-fill me-1"></i> Bản đồ
-                                </a>
-                            </div>
+                        <div class="border-top pt-3">
+                            <h6 class="fw-bold mb-1">Tư Gia Nhà Gái</h6>
+                            <p class="text-muted small mb-3">Số 10, Hoa Phượng, HP</p>
+                            <a href="https://goo.gl/maps/placeholder" target="_blank" class="btn btn-sm btn-bride rounded-pill px-4 w-100">
+                                <i class="bi bi-map-fill me-1"></i> Xem Bản Đồ
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 col-12" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card border-0 shadow rounded-4 overflow-hidden h-100">
-                        <div class="card-header bg-white border-bottom-0 text-center pt-4 pb-0">
-                            <span class="badge bg-groom-light text-groom fs-6 px-3 py-2 rounded-pill mb-2 border border-groom border-opacity-25 text-nowrap-mobile">
-                                NHÀ TRAI
-                            </span>
-                            <h3 class="font-playfair text-groom display-6 fw-bold text-nowrap-mobile">Lê Thao</h3>
+
+                <div class="event-card" data-aos="fade-up">
+                    <div class="event-header bg-groom-light">
+                        <span class="badge bg-dark rounded-pill mb-2">NHÀ TRAI</span>
+                        <h3 class="font-playfair text-groom m-0">Lê Thao</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="row g-2 mb-3">
+                            <div class="col-6 border-end">
+                                <small class="text-muted d-block">Thành Hôn</small>
+                                <strong class="fs-5 text-dark">10:30</strong>
+                            </div>
+                            <div class="col-6">
+                                <small class="text-muted d-block">Tiệc Cưới</small>
+                                <strong class="fs-5 text-dark">17:30</strong>
+                            </div>
                         </div>
-                        <div class="card-body p-3 text-center">
-                            <div class="row justify-content-center g-2 mb-3">
-                                <div class="col-6">
-                                    <div class="py-3 px-1 rounded-3 bg-groom-light h-100 border border-groom border-opacity-10">
-                                        <h6 class="font-playfair text-groom mb-1 text-nowrap-mobile">Thành Hôn</h6>
-                                        <p class="mb-0 fw-bold">10:30</p>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="py-3 px-1 rounded-3 bg-groom-light h-100 border border-groom border-opacity-10">
-                                        <h6 class="font-playfair text-groom mb-1 text-nowrap-mobile">Tiệc Cưới</h6>
-                                        <p class="mb-0 fw-bold">17:30</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-top pt-3">
-                                <h5 class="fw-bold text-dark mb-1">Tư Gia Nhà Trai</h5>
-                                <p class="text-secondary mb-3 small">Số 22, Lê Lợi, HN</p>
-                                <a href="https://goo.gl/maps/placeholder" target="_blank" class="btn btn-sm btn-groom rounded-pill px-4 shadow-sm fw-bold text-nowrap-mobile">
-                                    <i class="bi bi-map-fill me-1"></i> Bản đồ
-                                </a>
-                            </div>
+                        <div class="border-top pt-3">
+                            <h6 class="fw-bold mb-1">Tư Gia Nhà Trai</h6>
+                            <p class="text-muted small mb-3">Số 22, Lê Lợi, HN</p>
+                            <a href="https://goo.gl/maps/placeholder" target="_blank" class="btn btn-sm btn-groom rounded-pill px-4 w-100">
+                                <i class="bi bi-map-fill me-1"></i> Xem Bản Đồ
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="gift" class="py-5">
-        <div class="container text-center" data-aos="zoom-in">
-            <h2 class="font-playfair display-5 mb-3">Hộp Mừng Cưới</h2>
-            <p class="lead text-muted mb-4 w-75 mx-auto">Gửi tặng đôi trẻ những món quà ý nghĩa</p>
-            <button type="button" class="btn btn-primary btn-lg rounded-pill px-5 shadow" data-bs-toggle="modal" data-bs-target="#giftModal">
-                <i class="bi bi-gift-fill me-2"></i> Gửi Quà Mừng
-            </button>
-        </div>
-    </section>
+        <section id="gift" class="py-5 bg-light text-center">
+            <div class="px-3">
+                <h2 class="font-playfair display-5 mb-3">Hộp Mừng Cưới</h2>
+                <p class="text-muted small mb-4">Gửi tặng đôi trẻ những món quà ý nghĩa</p>
+                <button type="button" class="btn btn-primary rounded-pill px-5 shadow w-100" data-bs-toggle="modal" data-bs-target="#giftModal">
+                    <i class="bi bi-gift-fill me-2"></i> Gửi Quà
+                </button>
+            </div>
+        </section>
 
-    <div class="modal fade" id="giftModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
+        <section id="rsvp" class="py-5 text-center">
+            <div class="px-3">
+                <h2 class="font-playfair display-5 mb-3">Tham Dự</h2>
+                <p class="text-muted small mb-4">Vui lòng xác nhận để chúng mình chuẩn bị chu đáo nhất nhé!</p>
+                
+                <form id="rsvpForm" class="text-start bg-white p-4 rounded-4 shadow-sm border">
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Tên của bạn</label>
+                        <input type="text" name="Name" class="form-control bg-light border-0" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Bạn là khách của</label>
+                        <select name="GuestOf" class="form-select bg-light border-0">
+                            <option value="Khách Nhà Trai">Nhà Trai (Chú Rể)</option>
+                            <option value="Khách Nhà Gái">Nhà Gái (Cô Dâu)</option>
+                            <option value="Khách Cả Hai">Cả Hai</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Tham dự?</label>
+                        <select name="Attending" class="form-select bg-light border-0">
+                            <option value="Có tham dự">Chắc chắn tham dự!</option>
+                            <option value="Không tham dự">Tiếc quá, mình bận rồi</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Lời nhắn</label>
+                        <textarea name="Message" class="form-control bg-light border-0" rows="2"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100 rounded-pill fw-bold" id="btnSubmit">Gửi Xác Nhận</button>
+                </form>
+            </div>
+        </section>
+
+        <footer class="bg-dark text-white py-4 text-center">
+            <p class="mb-0 font-montserrat small">Wedding of Trang & Thao</p>
+        </footer>
+
+    </div> <div class="modal fade" id="giftModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content border-0 shadow-lg rounded-4">
-                <div class="modal-header bg-primary text-white border-0">
-                    <h5 class="modal-title font-playfair fw-bold mx-auto">Cảm ơn tấm lòng của bạn! ❤️</h5>
+                <div class="modal-header bg-primary text-white border-0 py-2">
+                    <h6 class="modal-title font-playfair fw-bold mx-auto">Cảm ơn tấm lòng của bạn! ❤️</h6>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-4 bg-white">
-                    <div class="row g-4 justify-content-center">
-                        <div class="col-6 text-center border-end-md">
-                            <h5 class="font-playfair text-primary mb-2">Chú Rể</h5>
-                            <img src="images/qr-groom.jpg" class="img-fluid rounded border mb-2" style="max-width: 180px;">
-                            <p class="mb-0 small fw-bold">BIDV: 2220868825</p>
-                        </div>
-                        <div class="col-6 text-center">
-                            <h5 class="font-playfair text-primary mb-2">Cô Dâu</h5>
-                            <img src="images/qr-bride.jpg" class="img-fluid rounded border mb-2" style="max-width: 180px;">
-                            <p class="mb-0 small fw-bold">VCB: 9382197160</p>
-                        </div>
+                    <div class="text-center border-end-mobile">
+                        <h5 class="font-playfair text-primary">Chú Rể</h5>
+                        <img src="images/qr-groom.jpg" class="qr-img">
+                        <p class="mb-0 small fw-bold">BIDV: 2220868825</p>
+                    </div>
+                    <div class="text-center pt-3">
+                        <h5 class="font-playfair text-primary">Cô Dâu</h5>
+                        <img src="images/qr-bride.jpg" class="qr-img">
+                        <p class="mb-0 small fw-bold">VCB: 9382197160</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <section id="rsvp" class="py-5 section-parallax text-white text-center position-relative">
-        <div class="overlay-dark"></div>
-        <div class="container position-relative z-2 py-5" data-aos="fade-up">
-            <h2 class="font-playfair display-4 mb-3">Tham Dự</h2>
-            <div class="card bg-white text-dark p-4 mx-auto shadow-lg" style="max-width: 500px; border-radius: 15px;">
-                <form id="rsvpForm">
-                    <div class="mb-3">
-                        <input type="text" name="Name" class="form-control bg-light border-0" placeholder="Tên của bạn" required>
-                    </div>
-                    <div class="mb-3">
-                        <select name="GuestOf" class="form-select bg-light border-0">
-                            <option value="Khách Nhà Trai">Khách Nhà Trai (Chú Rể)</option>
-                            <option value="Khách Nhà Gái">Khách Nhà Gái (Cô Dâu)</option>
-                            <option value="Khách Cả Hai">Khách chung</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <input type="tel" name="Phone" class="form-control bg-light border-0" placeholder="Số điện thoại" required>
-                    </div>
-                    <div class="mb-3">
-                        <select name="Attending" class="form-select bg-light border-0">
-                            <option value="Có tham dự">Chắc chắn tham dự!</option>
-                            <option value="Không tham dự">Xin lỗi, tôi bận</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <textarea name="Message" class="form-control bg-light border-0" rows="3" placeholder="Lời chúc..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary w-100 rounded-pill fw-bold" id="btnSubmit">Gửi Xác Nhận</button>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-dark text-white py-4 text-center">
-        <p class="mb-0 font-montserrat small">Wedding of Trang & Thao</p>
-    </footer>
-
+    
     <div class="modal fade" id="imageModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content bg-transparent border-0">
                 <div class="modal-body p-0 text-center position-relative">
                     <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3 z-3" data-bs-dismiss="modal"></button>
-                    <img src="" id="lightboxImage" class="img-fluid rounded shadow-lg" style="max-height: 90vh;">
+                    <img src="" id="lightboxImage" class="img-fluid rounded shadow-lg">
                 </div>
             </div>
         </div>
@@ -255,6 +220,5 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script src="js/main.js"></script>
-
 </body>
 </html>

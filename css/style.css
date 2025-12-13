@@ -5,135 +5,119 @@
     --font-body: 'Montserrat', sans-serif;
 }
 
-body { font-family: var(--font-body); color: #555; line-height: 1.6; overflow-x: hidden; }
+/* 1. CÀI ĐẶT NỀN CHUNG (Cho máy tính) */
+body { 
+    font-family: var(--font-body); 
+    color: #555; 
+    line-height: 1.6; 
+    background-color: #f0f2f5; /* Màu nền xám nhẹ cho phần thừa ở máy tính */
+    background-image: url('../images/hero-bg.jpg'); /* Hoặc ảnh nền mờ */
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+/* 2. KHUNG GIẢ LẬP MOBILE (Trái tim của thiết kế này) */
+.mobile-container {
+    max-width: 480px; /* Giới hạn chiều rộng bằng 1 chiếc điện thoại to */
+    margin: 0 auto; /* Căn giữa màn hình */
+    background-color: #fff; /* Nền trắng cho nội dung */
+    min-height: 100vh;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1); /* Đổ bóng để nổi bật trên máy tính */
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Font chữ chuẩn Mobile */
 .font-playfair { font-family: var(--font-head); }
 .font-cinzel { font-family: 'Cinzel', serif; }
 .font-montserrat { font-family: 'Montserrat', sans-serif; }
 
-/* Desktop giữ nguyên khoảng cách rộng cho sang */
-.letter-spacing-3 { letter-spacing: 3px; }
-
-/* Font chữ thông minh (Desktop to, Mobile vừa đủ) */
-.display-1 { font-size: clamp(2.2rem, 8vw, 5rem) !important; line-height: 1.1; }
-.display-4 { font-size: clamp(1.8rem, 5vw, 3.5rem) !important; }
-.display-5 { font-size: clamp(1.5rem, 4vw, 3rem) !important; }
-.display-6 { font-size: clamp(1.3rem, 3vw, 2.5rem) !important; font-weight: 700; }
-.couple-name { font-size: clamp(1.3rem, 3vw, 2rem); margin-bottom: 0; font-weight: 700; }
+.display-1 { font-size: 3rem !important; line-height: 1.2; } /* Tên to rõ */
+.display-4 { font-size: 2.2rem !important; }
+.display-5 { font-size: 1.8rem !important; }
+.display-6 { font-size: 1.5rem !important; font-weight: 700; }
+.couple-name { font-size: 1.4rem; font-weight: 700; margin-bottom: 5px; color: var(--text-dark); }
 
 .text-primary { color: var(--primary-color) !important; }
 .bg-primary { background-color: var(--primary-color) !important; }
 .btn-primary { 
     background-color: var(--primary-color); border-color: var(--primary-color);
-    transition: all 0.3s;
+    transition: all 0.3s; padding: 12px 30px; font-size: 1.1rem;
 }
-.btn-primary:hover { background-color: #a3896c; border-color: #a3896c; transform: translateY(-2px); }
-.btn-outline-primary { color: var(--primary-color); border-color: var(--primary-color); }
+.btn-primary:hover { background-color: #a3896c; border-color: #a3896c; }
 
-.divider { width: 80px; height: 3px; background-color: var(--primary-color); margin: 20px 0; }
+.divider { width: 60px; height: 3px; background-color: var(--primary-color); margin: 15px auto; }
 
+/* Header Banner */
 .header-bg {
     background: url('../images/hero-bg.jpg') no-repeat center center/cover;
-    background-attachment: fixed; 
-}
-.section-parallax {
-    background: url('../images/gallery1.jpg') no-repeat center center/cover;
-    background-attachment: fixed;
+    height: 100vh; /* Full màn hình điện thoại */
+    position: relative;
 }
 .overlay { background: rgba(0,0,0,0.3); position: absolute; top:0; left:0; width:100%; height:100%; }
-.overlay-dark { background: rgba(0,0,0,0.6); position: absolute; top:0; left:0; width:100%; height:100%; }
 
-.navbar { padding: 20px 0; transition: all 0.4s ease; }
-.navbar.scrolled { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); padding: 10px 0; }
-.navbar.scrolled .nav-link { color: #333 !important; }
-.navbar.scrolled .navbar-brand { color: var(--primary-color) !important; }
-.navbar-dark .nav-link { color: rgba(255,255,255,0.95); font-weight: 500; }
+/* Navbar Mobile */
+.navbar { padding: 10px 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); }
+.navbar-brand { color: var(--primary-color) !important; font-weight: bold; font-size: 1.5rem; }
+.nav-link { color: #333 !important; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
-/* Timeline modal QR */
-@media (min-width: 768px) {
-    .border-end-md { border-right: 1px dashed #ddd; }
-}
-
-.gallery-img { cursor: pointer; transition: transform 0.3s ease; }
-.gallery-img:hover { transform: scale(1.02); opacity: 0.9; }
-
-.event-card { transition: transform 0.3s; }
-.event-card:hover { transform: translateY(-5px); }
-
-.time-box {
-    background: rgba(255,255,255,0.2); backdrop-filter: blur(5px);
-    padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.3);
-    min-width: 70px;
-}
-
-@keyframes pulse-animation {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
-    70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
-}
-.pulse-btn { animation: pulse-animation 2s infinite; }
-
-.text-groom { color: #003366 !important; } 
-.bg-groom-light { background-color: #e6f0ff !important; }
-.border-groom { border-color: #003366 !important; }
-.btn-groom { background-color: #003366 !important; border-color: #003366 !important; color: #fff !important; }
-
-.text-bride { color: #cc0033 !important; }
-.bg-bride-light { background-color: #ffe6ea !important; }
-.border-bride { border-color: #cc0033 !important; }
-.btn-bride { background-color: #cc0033 !important; border-color: #cc0033 !important; color: #fff !important; }
-
-/* Slider */
-.swiper { width: 100%; padding-bottom: 50px; }
-.swiper-slide {
-    text-align: center; background: transparent;
-    display: flex; justify-content: center; align-items: center;
-}
-.swiper-slide img {
-    display: block; width: 100%; height: auto; 
-    max-height: 500px;
-    object-fit: contain;
-    border-radius: 10px;
-    cursor: pointer; transition: transform 0.3s;
+/* Ảnh Cặp đôi */
+.couple-img {
+    width: 140px; height: 140px; 
+    object-fit: cover; border-radius: 50%;
+    margin-bottom: 10px;
+    border: 3px solid #fff;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Sự kiện (Event Cards) */
+.event-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+.event-header { padding: 15px; text-align: center; border-bottom: 1px dashed #eee; }
+.event-body { padding: 20px; text-align: center; }
+
+/* Slider Album */
+.swiper { width: 100%; padding-bottom: 40px; }
+.swiper-slide img {
+    width: 100%; height: auto; border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
 }
 .swiper-pagination-bullet-active { background-color: var(--primary-color) !important; }
 
-/* Ảnh cặp đôi */
-.couple-img {
-    width: 250px; height: 250px; object-fit: cover;
-    transition: all 0.3s ease;
+/* Countdown */
+.time-box {
+    background: rgba(255,255,255,0.25); backdrop-filter: blur(5px);
+    padding: 10px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.4);
+    min-width: 65px; margin: 0 3px;
 }
+.time-box .display-5 { font-size: 1.5rem !important; font-weight: 800; }
+.time-box .small { font-size: 0.7rem; text-transform: uppercase; }
 
-/* =========================================
-   TINH CHỈNH MOBILE (Chống vỡ chữ & Xuống dòng)
-   ========================================= */
-@media (max-width: 768px) {
-    /* 1. Mở rộng khung nhìn ra sát lề (Chỉ chừa 10px) */
-    .container {
-        padding-left: 10px !important;
-        padding-right: 10px !important;
-    }
-    
-    /* 2. Giảm khoảng cách chữ để nhét được nhiều chữ hơn trên 1 dòng */
-    .letter-spacing-3 { letter-spacing: 0.5px !important; }
-    
-    /* 3. Ép các tiêu đề ngắn KHÔNG ĐƯỢC xuống dòng */
-    .text-nowrap-mobile { white-space: nowrap !important; }
-    
-    /* 4. Giảm padding trong các ô sự kiện để chữ có chỗ thở */
-    .card-body { padding: 1rem 0.5rem !important; }
-    
-    /* 5. Tinh chỉnh Header */
-    .header-bg { background-attachment: scroll !important; height: 100vh; }
-    .display-1 { font-size: 2.5rem !important; } /* Tên tiêu đề vừa phải */
-    
-    /* 6. Ảnh cặp đôi nhỏ lại chút để tên bên dưới không bị chèn */
-    .couple-img { width: 130px !important; height: 130px !important; margin-bottom: 10px !important; }
-    
-    /* 7. Modal QR dọc */
-    .border-end-md { border-bottom: 1px dashed #ddd; padding-bottom: 20px; margin-bottom: 20px; }
-    
-    /* 8. Countdown nhỏ gọn */
-    .time-box { padding: 5px; min-width: 55px; }
-    .time-box .display-5 { font-size: 1.2rem !important; }
+/* Modal QR */
+.modal-dialog { margin: 10px; }
+.qr-img { max-width: 160px; border-radius: 10px; border: 1px solid #eee; margin-bottom: 10px; }
+.border-end-mobile { border-bottom: 1px dashed #ddd; padding-bottom: 20px; margin-bottom: 20px; }
+
+/* Animation nút tim đập */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
 }
+.pulse-btn { animation: pulse 2s infinite; }
+
+/* Màu sắc Nhà Trai / Nhà Gái */
+.text-groom { color: #2c3e50 !important; }
+.bg-groom-light { background-color: #f0f4f8 !important; }
+.btn-groom { background-color: #2c3e50; color: #fff; }
+
+.text-bride { color: #d63384 !important; }
+.bg-bride-light { background-color: #fff0f5 !important; }
+.btn-bride { background-color: #d63384; color: #fff; }
