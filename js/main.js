@@ -99,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initSwiperSlider() {
     new Swiper(".mySwiper", {
-        slidesPerView: 3, 
+        slidesPerView: 3, // CỐ ĐỊNH 3 ẢNH (Bất kể màn hình)
         spaceBetween: 20,
         loop: true,
         centeredSlides: true,
@@ -110,7 +110,8 @@ function initSwiperSlider() {
         pagination: {
             el: ".swiper-pagination",
             clickable: true,
-        }
+        },
+        // Đã xóa phần breakpoints để không bị chuyển về 1 ảnh trên mobile
     });
 
     const galleryImages = document.querySelectorAll('.gallery-img');

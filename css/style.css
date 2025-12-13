@@ -5,16 +5,19 @@
     --font-body: 'Montserrat', sans-serif;
 }
 
+/* ÉP CỨNG GIAO DIỆN DESKTOP */
 body { 
     font-family: var(--font-body); 
     color: #555; 
-    line-height: 1.7; 
-    min-width: 1280px; /* Bắt buộc chiều rộng tối thiểu là Desktop */
+    line-height: 1.7;
+    min-width: 1280px !important; /* Bắt buộc web rộng 1280px */
     overflow-x: auto;
 }
 
+/* Ép container không được co giãn theo mobile */
 .container {
-    max-width: 1200px !important; /* Cố định chiều rộng container */
+    max-width: 1200px !important; 
+    width: 1200px !important;
 }
 
 .font-playfair { font-family: var(--font-head); }
@@ -30,7 +33,6 @@ body {
 }
 .btn-primary:hover { background-color: #a3896c; border-color: #a3896c; transform: translateY(-2px); }
 .btn-outline-primary { color: var(--primary-color); border-color: var(--primary-color); }
-.btn-outline-primary:hover { background-color: var(--primary-color); border-color: var(--primary-color); }
 
 .divider { width: 80px; height: 3px; background-color: var(--primary-color); margin: 20px 0; }
 
@@ -52,7 +54,6 @@ body {
 .navbar-dark .nav-link { color: rgba(255,255,255,0.95); font-weight: 500; }
 
 .timeline-circle { width: 50px; height: 50px; border-radius: 50%; font-size: 1.2rem; z-index: 2; }
-
 .timeline { position: relative; }
 .timeline::before {
     content: ''; position: absolute; top: 0; bottom: 0; left: 50%;
@@ -77,30 +78,17 @@ body {
     70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 0, 0, 0); }
     100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
 }
-.pulse-btn {
-    animation: pulse-animation 2s infinite;
-}
+.pulse-btn { animation: pulse-animation 2s infinite; }
 
 .text-groom { color: #003366 !important; } 
 .bg-groom-light { background-color: #e6f0ff !important; }
 .border-groom { border-color: #003366 !important; }
-.btn-groom { 
-    background-color: #003366 !important; 
-    border-color: #003366 !important;
-    color: #fff !important;
-}
+.btn-groom { background-color: #003366 !important; border-color: #003366 !important; color: #fff !important; }
 
 .text-bride { color: #cc0033 !important; }
 .bg-bride-light { background-color: #ffe6ea !important; }
 .border-bride { border-color: #cc0033 !important; }
-.btn-bride { 
-    background-color: #cc0033 !important; 
-    border-color: #cc0033 !important;
-    color: #fff !important;
-}
-
-.event-card h5 { font-weight: 700; }
-.event-card p.fw-bold { font-weight: 800 !important; }
+.btn-bride { background-color: #cc0033 !important; border-color: #cc0033 !important; color: #fff !important; }
 
 .swiper { width: 100%; padding-bottom: 50px; }
 .swiper-slide {
@@ -112,5 +100,4 @@ body {
     object-fit: cover; border-radius: 10px;
     cursor: pointer; transition: transform 0.3s;
 }
-.swiper-slide img:hover { transform: scale(1.03); }
 .swiper-pagination-bullet-active { background-color: var(--primary-color) !important; }
