@@ -62,7 +62,7 @@ form.addEventListener('submit', e => {
 
 // Slider & Lightbox
 document.addEventListener('DOMContentLoaded', function() {
-    const totalImages = 20; 
+    const totalImages = 9; 
     const folder = 'images/album/';
     const container = document.getElementById('gallery-wrapper');
     
