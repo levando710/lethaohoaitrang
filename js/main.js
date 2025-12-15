@@ -106,42 +106,48 @@ document.addEventListener('DOMContentLoaded', function() {
     const audio = document.getElementById('weddingMusic');
     let isPlaying = false;
 
-    // Hàm bật/tắt nhạc
+    // 1. Hàm bật/tắt nhạc khi bấm nút
     function toggleMusic() {
         if (isPlaying) {
             audio.pause();
             musicBtn.classList.remove('playing');
-            musicBtn.innerHTML = '<i class="bi bi-music-note-beamed"></i>';
+            musicBtn.innerHTML = '<i class="bi bi-music-note-beamed"></i>'; // Icon nốt nhạc
         } else {
-            audio.play().then(() => {
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
-            }).catch(err => console.log("Chặn Autoplay: " + err));
+            audio.play();
+            musicBtn.classList.add('playing');
+            musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>'; // Icon pause
         }
         isPlaying = !isPlaying;
     }
 
-    // Sự kiện click nút nhạc
-    musicBtn.addEventListener('click', toggleMusic);
+    musicBtn.addEventListener('click', function(e) {
+        // Ngăn sự kiện nổi bọt để không kích hoạt cái auto-play bên dưới
+        e.stopPropagation(); 
+        toggleMusic();
+    });
 
-    // MẸO: Tự động phát nhạc khi người dùng chạm vào màn hình lần đầu tiên
-    // (Vì trình duyệt chặn tự phát, nên ta phải chờ người dùng tương tác)
-    function autoPlayOnFirstInteraction() {
+    // 2. Cấu hình TỰ ĐỘNG PHÁT khi chạm màn hình
+    // Thay vì dùng 'scroll', ta dùng 'touchstart' và 'click'
+    function startMusicOnInteraction() {
         if (!isPlaying) {
             audio.play().then(() => {
+                // Nếu phát thành công
                 isPlaying = true;
                 musicBtn.classList.add('playing');
                 musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
-            }).catch(error => {
-                console.log("Autoplay blocked, waiting for interaction");
+                
+                // Xóa ngay sự kiện để không gọi lại nữa
+                document.removeEventListener('click', startMusicOnInteraction);
+                document.removeEventListener('touchstart', startMusicOnInteraction);
+            }).catch((error) => {
+                console.log("Trình duyệt vẫn chặn chưa cho phát: " + error);
             });
         }
-        // Xóa sự kiện sau khi đã chạy 1 lần
-        document.removeEventListener('click', autoPlayOnFirstInteraction);
-        document.removeEventListener('scroll', autoPlayOnFirstInteraction);
     }
 
-    // Lắng nghe cú click hoặc cuộn chuột đầu tiên
-    document.addEventListener('click', autoPlayOnFirstInteraction);
-    document.addEventListener('scroll', autoPlayOnFirstInteraction);
+    // Thêm sự kiện vào toàn bộ trang web
+    // 'click': Cho máy tính
+    // 'touchstart': Cho điện thoại (chạm vào màn hình là tính)
+    document.addEventListener('click', startMusicOnInteraction);
+    document.addEventListener('touchstart', startMusicOnInteraction);
 });
