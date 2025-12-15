@@ -102,52 +102,58 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 document.addEventListener('DOMContentLoaded', function() {
+    // --- PHẦN XỬ LÝ NHẠC & MÀN HÌNH CHỜ ---
+    const overlay = document.getElementById('welcome-overlay');
+    const btnOpen = document.getElementById('btn-open-wedding');
     const musicBtn = document.getElementById('musicBtn');
     const audio = document.getElementById('weddingMusic');
     let isPlaying = false;
 
-    // 1. Hàm bật/tắt nhạc khi bấm nút
-    function toggleMusic() {
-        if (isPlaying) {
-            audio.pause();
-            musicBtn.classList.remove('playing');
-            musicBtn.innerHTML = '<i class="bi bi-music-note-beamed"></i>'; // Icon nốt nhạc
-        } else {
-            audio.play();
+    // Hàm cập nhật trạng thái nút nhạc góc màn hình
+    function updateMusicBtnState(playing) {
+        if (playing) {
             musicBtn.classList.add('playing');
-            musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>'; // Icon pause
+            musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+        } else {
+            musicBtn.classList.remove('playing');
+            musicBtn.innerHTML = '<i class="bi bi-music-note-beamed"></i>';
         }
-        isPlaying = !isPlaying;
     }
 
-    musicBtn.addEventListener('click', function(e) {
-        // Ngăn sự kiện nổi bọt để không kích hoạt cái auto-play bên dưới
-        e.stopPropagation(); 
-        toggleMusic();
-    });
-
-    // 2. Cấu hình TỰ ĐỘNG PHÁT khi chạm màn hình
-    // Thay vì dùng 'scroll', ta dùng 'touchstart' và 'click'
-    function startMusicOnInteraction() {
-        if (!isPlaying) {
+    // 1. SỰ KIỆN QUAN TRỌNG NHẤT: Bấm nút "Mở Thiệp"
+    if (btnOpen) {
+        btnOpen.addEventListener('click', function() {
+            // Ẩn màn hình chờ
+            overlay.classList.add('overlay-hidden');
+            
+            // Bắt đầu phát nhạc ngay lập tức
             audio.play().then(() => {
-                // Nếu phát thành công
                 isPlaying = true;
-                musicBtn.classList.add('playing');
-                musicBtn.innerHTML = '<i class="bi bi-pause-fill"></i>';
-                
-                // Xóa ngay sự kiện để không gọi lại nữa
-                document.removeEventListener('click', startMusicOnInteraction);
-                document.removeEventListener('touchstart', startMusicOnInteraction);
-            }).catch((error) => {
-                console.log("Trình duyệt vẫn chặn chưa cho phát: " + error);
+                updateMusicBtnState(true);
+            }).catch(err => {
+                console.log("Lỗi phát nhạc: " + err);
             });
-        }
+
+            // Cho phép cuộn trang trở lại (nếu bạn có khóa scroll)
+            document.body.style.overflow = 'auto'; 
+        });
     }
 
-    // Thêm sự kiện vào toàn bộ trang web
-    // 'click': Cho máy tính
-    // 'touchstart': Cho điện thoại (chạm vào màn hình là tính)
-    document.addEventListener('click', startMusicOnInteraction);
-    document.addEventListener('touchstart', startMusicOnInteraction);
+    // 2. Sự kiện cho nút nhạc góc màn hình (để khách tắt/bật thủ công)
+    if (musicBtn) {
+        musicBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            if (isPlaying) {
+                audio.pause();
+                isPlaying = false;
+                updateMusicBtnState(false);
+            } else {
+                audio.play();
+                isPlaying = true;
+                updateMusicBtnState(true);
+            }
+        });
+    }
+    
+   
 });
